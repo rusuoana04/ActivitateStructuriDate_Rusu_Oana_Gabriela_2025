@@ -30,9 +30,14 @@ void afisare(struct Telefon t)
 	printf("% d. Telefonul %s , seria %c,  are %d Gb Ram, costa %5.2f Ron\n", t.id, t.producator, t.serie, t.RAM, t.pret);
 }
 
-void modifica_Atribut(struct Telefon t)
+//trebuie sa punem pointer la telefon
+void modificaPret(struct Telefon* t, float noulPret)
 {
-
+	if (noulPret > 0)
+	{
+		t->pret = noulPret;
+	}
+	
 }
 
 void dezalocare(struct Telefon* t)
@@ -49,5 +54,8 @@ int main() {
 	t = initializare(1, 256, "Samsung", 2000.5, 'A');
 
 	 afisare( t);
+
+	 modificaPret(&t, 1000);
+	 afisare(t);
 	return 0;
 }
