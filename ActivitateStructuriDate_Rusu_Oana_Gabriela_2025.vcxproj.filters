@@ -18,5 +18,8 @@
     <ClCompile Include="lab1_Id.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="lab2_id.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
