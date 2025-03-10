@@ -43,3 +43,18 @@ struct fruct* citireVectorFructe(int nrFructe)
     }
     return fructe;
 }
+int main()
+{
+
+    //testare stuct in main
+    struct fruct mar;
+    mar.denumire = (char*)malloc((strlen("mar") + 1) * sizeof(char));
+    strcpy(mar.denumire, "mar");
+    mar.gramaj = 120.4;
+    mar.nrZile = 1;
+    mar.areSambure = false;
+
+    printf("%s, %5.2f, %d, %s", mar.denumire, mar.gramaj, mar.nrZile, mar.areSambure ? "Da" : "Nu");
+    free(mar.denumire);
+    return 0;
+}
