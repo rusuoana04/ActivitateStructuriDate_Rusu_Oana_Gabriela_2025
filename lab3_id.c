@@ -31,15 +31,15 @@ struct fruct* citireVectorFructe(int nrFructe)
     {
         printf("denumire: ");
         char aux[20];
-        scanf("%s", aux);
+        scanf_s("%19s", aux, (unsigned)_countof(aux));
         fructe[i].denumire = (char*)malloc((strlen(aux) + 1) * sizeof(char));
-        strcpy(fructe[i].denumire, aux);
+        strcpy_s(fructe[i].denumire, strlen(aux) + 1, aux);
         printf("gramaj: ");
-        scanf("%f", &fructe[i].gramaj);
+        scanf_s("%f", &fructe[i].gramaj);
         printf("nr zile: ");
-        scanf("%d", &fructe[i].nrZile);
+        scanf_s("%d", &fructe[i].nrZile);
         printf("are sambure: (0-nu; 1-da):");
-        scanf("%d", &fructe[i].areSambure);
+        scanf_s("%d", &fructe[i].areSambure);
     }
     return fructe;
 }
@@ -49,7 +49,7 @@ int main()
     //testare stuct in main
     struct fruct mar;
     mar.denumire = (char*)malloc((strlen("mar") + 1) * sizeof(char));
-    strcpy(mar.denumire, "mar");
+    strcpy_s(mar.denumire, strlen("mar") + 1, "mar");
     mar.gramaj = 120.4;
     mar.nrZile = 1;
     mar.areSambure = false;
@@ -60,11 +60,13 @@ int main()
 
     //vector static
     const int nrFructe = 10;
-    struct fruct fructe[nrFructe];
+    struct fruct* fructe = (struct fruct*)malloc(nrFructe * sizeof(struct fruct));
+    
+   
     for (int i = 0; i < nrFructe; i++)
     {
         fructe[i].denumire = (char*)malloc(sizeof(char) * (strlen("portocala") + 1));
-        strcpy(fructe[i].denumire, "portocala");
+        strcpy_s(fructe[i].denumire, strlen("portocala") + 1, "portocala");
         fructe[i].gramaj = 200;
         fructe[i].nrZile = 2;
         fructe[i].areSambure = false;
@@ -75,6 +77,7 @@ int main()
     {
         free(fructe[i].denumire);
     }
+    free(fructe);
 
     //vector alocat dinamic
     const int nrFructe3 = 3;
