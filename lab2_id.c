@@ -31,6 +31,7 @@ void afisare(struct Telefon t)
 }
 
 //trebuie sa punem pointer la telefon
+//trebuie sa transmitem telefonul prin pointer ca sa il putem modifica
 void modificaPret(struct Telefon* t, float noulPret)
 {
 	if (noulPret > 0)
@@ -40,9 +41,15 @@ void modificaPret(struct Telefon* t, float noulPret)
 	
 }
 
+//dezalocare campuri alocate dinamic
+
 void dezalocare(struct Telefon* t)
 {
-
+	if (t->producator != NULL)
+	{
+		free(t->producator);
+		t->producator = NULL;
+	}
 }
 
 
@@ -56,6 +63,8 @@ int main() {
 	 afisare( t);
 
 	 modificaPret(&t, 1000);
+	 afisare(t);
+	 dezalocare(&t);
 	 afisare(t);
 	return 0;
 }
