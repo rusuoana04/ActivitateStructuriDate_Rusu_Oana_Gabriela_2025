@@ -57,5 +57,40 @@ int main()
     printf("%s, %5.2f, %d, %s", mar.denumire, mar.gramaj, mar.nrZile, mar.areSambure ? "Da" : "Nu");
     //eliberare memorie atribut alocat dinamic
     free(mar.denumire);
+
+    //vector static
+    const int nrFructe = 10;
+    struct fruct fructe[nrFructe];
+    for (int i = 0; i < nrFructe; i++)
+    {
+        fructe[i].denumire = (char*)malloc(sizeof(char) * (strlen("portocala") + 1));
+        strcpy(fructe[i].denumire, "portocala");
+        fructe[i].gramaj = 200;
+        fructe[i].nrZile = 2;
+        fructe[i].areSambure = false;
+    }
+    afisareVectorFructe(fructe, nrFructe);
+
+    for (int i = 0; i < nrFructe; i++)
+    {
+        free(fructe[i].denumire);
+    }
+
+    //vector alocat dinamic
+    const int nrFructe3 = 3;
+    struct fruct* fructeDinamic;
+    fructeDinamic = citireVectorFructe(nrFructe3);
+
+
+    if (fructeDinamic != NULL) {
+        afisareVectorFructe(fructeDinamic, nrFructe3);
+
+        for (int i = 0; i < nrFructe3; i++)
+        {
+            free(fructeDinamic[i].denumire);
+        }
+        free(fructeDinamic);
+    }
+
     return 0;
 }
