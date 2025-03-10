@@ -20,3 +20,26 @@ void afisareVectorFructe(struct fruct* fructe, int nrFructe)
         printf("%s, %5.2f, %d, %s \n", fructe[i].denumire, fructe[i].gramaj, fructe[i].nrZile, fructe[i].areSambure ? "Da" : "Nu");
     }
 }
+
+//functie citire vector
+struct fruct* citireVectorFructe(int nrFructe)
+{
+    struct fruct* fructe;
+    fructe = (struct fruct*)malloc(nrFructe * sizeof(struct fruct));
+
+    for (int i = 0; i < nrFructe; i++)
+    {
+        printf("denumire: ");
+        char aux[20];
+        scanf("%s", aux);
+        fructe[i].denumire = (char*)malloc((strlen(aux) + 1) * sizeof(char));
+        strcpy(fructe[i].denumire, aux);
+        printf("gramaj: ");
+        scanf("%f", &fructe[i].gramaj);
+        printf("nr zile: ");
+        scanf("%d", &fructe[i].nrZile);
+        printf("are sambure: (0-nu; 1-da):");
+        scanf("%d", &fructe[i].areSambure);
+    }
+    return fructe;
+}
