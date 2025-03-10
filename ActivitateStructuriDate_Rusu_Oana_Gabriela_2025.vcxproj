@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="lab1_Id.c" />
     <ClCompile Include="lab2_id.c" />
+    <ClCompile Include="lab3_id.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
