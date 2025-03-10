@@ -55,6 +55,7 @@ int main()
     mar.areSambure = false;
 
     printf("%s, %5.2f, %d, %s", mar.denumire, mar.gramaj, mar.nrZile, mar.areSambure ? "Da" : "Nu");
+    //eliberare memorie atribut alocat dinamic
     free(mar.denumire);
     return 0;
 }
