@@ -44,9 +44,19 @@ void afisareVector(struct Telefon* vector, int nrElemente) {
 	}
 }
 
-struct Sablon* copiazaPrimeleNElemente(struct Telefon* vector, int nrElemente, int nrElementeCopiate) {
-	//copiem intr-un vector nou pe care il vom returna primele nrElementeCopiate
+//functie copiere primele elemente
+
+struct Telefon* copiazaPrimeleNElemente(struct Telefon* vector, int nrElemente, int nrElementeCopiate) {
+	
 	struct Telefon *vectorNou=NULL;
+	vectorNou = (struct Telefon*)malloc(sizeof(struct Telefon) * nrElementeCopiate);
+	for (int i = 0; i < nrElementeCopiate; i++)
+	{
+		vectorNou[i] = vector[i];
+		//trebuie sa facem deep copy pentru atributul alocat dinamic
+		vectorNou[i].producator = (char*)malloc(sizeof(char) * (strlen(vector[i].producator) + 1));
+		strcpy_s(vectorNou[i].producator, strlen(vector[i].producator) + 1, vector[i].producator);
+	}
 
 	return vectorNou;
 }
@@ -83,6 +93,11 @@ int main() {
 	telefoane[2] = initializare(3, 64, "Telefon3", 3000, 'C');
 
 	afisareVector(telefoane, nrTelefoane);
+
+	struct Telefon* primeleTelefoane=NULL;
+	int nrPrimeleTelefoane = 2;
+	primeleTelefoane=copiazaPrimeleNElemente(telefoane, nrTelefoane, nrPrimeleTelefoane);
+	afisareVector(primeleTelefoane, nrTelefoane, nrPrimeleTelefoane);
 
 	return 0;
 }
