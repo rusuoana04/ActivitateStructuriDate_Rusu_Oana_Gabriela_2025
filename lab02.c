@@ -36,7 +36,7 @@ struct Telefon {
 	}
 
 
-
+	//implementare si testare functie afisareVector
 void afisareVector(struct Telefon* vector, int nrElemente) {
 	for (int i = 0; i < nrElemente; i++)
 	{
