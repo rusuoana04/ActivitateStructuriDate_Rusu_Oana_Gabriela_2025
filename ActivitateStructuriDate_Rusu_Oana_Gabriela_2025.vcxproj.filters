@@ -27,8 +27,5 @@
     <ClCompile Include="lab02.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="exercitiu.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>
