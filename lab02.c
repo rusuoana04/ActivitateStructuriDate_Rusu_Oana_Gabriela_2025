@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 #include<malloc.h>
 
@@ -60,10 +61,36 @@ struct Telefon* copiazaPrimeleNElemente(struct Telefon* vector, int nrElemente, 
 
 	return vectorNou;
 }
+//dezalocare vector
 
-void dezalocare(struct Telefon** vector, int* nrElemente) {
-	//dezalocam elementele din vector si vectorul
+void dezalocare(struct Telefon** vector, int* nrElemente)
+{
+	for (int i = 0; i < (*nrElemente); i++)
+	{
+		if ((*vector)[i].producator != NULL)
+		{
+			free((*vector)[i].producator);
+
+		}
+		free(*vector);
+		*vector = NULL;
+		*nrElemente = 0;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 void copiazaAnumiteElemente(struct Telefon* vector, char nrElemente, float prag, struct Telefon** vectorNou, int* dimensiune) {
 	//parametrul prag poate fi modificat in functie de 
@@ -91,13 +118,16 @@ int main() {
 	telefoane[0] = initializare(1, 64, "Telefon1", 1000, 'A');
 	telefoane[1] = initializare(2, 64, "Telefon2", 2000, 'B');
 	telefoane[2] = initializare(3, 64, "Telefon3", 3000, 'C');
-
+	printf("vector telefoane: \n");
 	afisareVector(telefoane, nrTelefoane);
 
 	struct Telefon* primeleTelefoane=NULL;
 	int nrPrimeleTelefoane = 2;
 	primeleTelefoane=copiazaPrimeleNElemente(telefoane, nrTelefoane, nrPrimeleTelefoane);
-	afisareVector(primeleTelefoane, nrTelefoane, nrPrimeleTelefoane);
+	printf("\n\n vector telefoane copiate: \n");
+	afisareVector(primeleTelefoane, nrPrimeleTelefoane);
+	dezalocare(&primeleTelefoane, &nrPrimeleTelefoane);
+	afisareVector(primeleTelefoane, nrPrimeleTelefoane);
 
 	return 0;
 }
