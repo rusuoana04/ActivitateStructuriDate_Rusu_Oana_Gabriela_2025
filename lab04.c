@@ -89,14 +89,34 @@ void adaugaMasinaInLista(Nod* *cap, Masina masinaNoua)
 	}
 }
 
-void adaugaLaInceputInLista(/*lista de masini*/ Masina masinaNoua) {
+
+
+void adaugaLaInceputInLista(Nod* * cap, Masina masinaNoua) {
 	//adauga la inceputul listei o noua masina pe care o primim ca parametru
+	Nod* nou = (Nod*)malloc(sizeof(Nod));
+	nou->info = masinaNoua;
+	nou->next = *cap;
+	*cap = nou;
 }
 
-void* citireListaMasiniDinFisier(const char* numeFisier) {
+Nod* citireListaMasiniDinFisier(const char* numeFisier) {
 	//functia primeste numele fisierului, il deschide si citeste toate masinile din fisier
 	//prin apelul repetat al functiei citireMasinaDinFisier()
 	//ATENTIE - la final inchidem fisierul/stream-ul
+	Nod* cap = NULL;
+	FILE* f = fopen(numeFisier, "r");
+	if (f)
+	{
+		while (!feof(f))
+		{
+			//creem lista cu inserare la sfarsit
+			adaugaMasinaInLista(&cap, citireMasinaDinFisier(f));
+			
+		}
+	}
+	fclose(f);
+	return cap;
+
 }
 
 void dezalocareListaMasini(/*lista de masini*/) {
@@ -119,7 +139,8 @@ float calculeazaPretulMasinilorUnuiSofer(/*lista masini*/ const char* numeSofer)
 }
 
 int main() {
-
+	Nod* cap = citireListaMasiniDinFisier("masini.txt");
+	afisareListaMasini(cap);
 
 	return 0;
 }
