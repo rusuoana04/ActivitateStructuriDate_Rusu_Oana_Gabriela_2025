@@ -191,8 +191,13 @@ int main() {
 	m1.model = "Model1";
 	m1.numeSofer = "Sandel";
 	m1.serie = 'G';
-
+	
 	adaugaMasinaInListaLaFinal(&lista, m1);
+	afisareListaMasiniDeLaInceput(lista);
+	printf("\n ------------------------------------------------------ \n ");
+	//Testare functie de adaugare masina la inceput in lista dubla
+	printf("Adaugare masina lista  la inceput: \n ");
+	adaugaLaInceputInLista(&lista, m1);
 	afisareListaMasiniDeLaInceput(lista);
 	return 0;
 }
