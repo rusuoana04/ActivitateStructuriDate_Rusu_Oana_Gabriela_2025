@@ -179,7 +179,20 @@ int main() {
 	ListaDubla lista = citireLDMasiniDinFisier("masini.txt");
 	printf("\n Afisare lista  de la inceput la sfarsit: \n");
 	afisareListaMasiniDeLaInceput(lista);
+	printf("\n ------------------------------------------------------ \n ");
 	printf("\n Afisare lista  de la sfarsit  la inceput: \n ");
 	afisareListaMasiniDeLaSfarsit(lista);
+	//Testare functie de adaugare masina la final in lista dubla
+	printf("Adaugare masina lista  la final: \n ");
+	Masina m1;
+	m1.id = 11;
+	m1.nrUsi = 4;
+	m1.pret = 2000;
+	m1.model = "Model1";
+	m1.numeSofer = "Sandel";
+	m1.serie = 'G';
+
+	adaugaMasinaInListaLaFinal(&lista, m1);
+	afisareListaMasiniDeLaInceput(lista);
 	return 0;
 }
