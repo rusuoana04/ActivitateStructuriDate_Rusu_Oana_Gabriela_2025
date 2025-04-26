@@ -162,7 +162,7 @@ float calculeazaPretulMasiniiUnuiSofer(Nod* cap, const char* numeSofer)
 	while (cap)
 	{
 		//comparam daca informatia utila din numeSofer e egala cu valoarea primita in variabila numeSofer din functie
-		if (strcmp(cap->info.numeSofer, numeSofer))
+		if (strcmp(cap->info.numeSofer, numeSofer)==0)
 		{
 			suma += cap->info.pret;
 		}
@@ -173,17 +173,22 @@ float calculeazaPretulMasiniiUnuiSofer(Nod* cap, const char* numeSofer)
 	return suma;
 }
 
-
-void stergeMasiniDinSeria(/*lista masini*/ char serieCautata) {
-	//sterge toate masinile din lista care au seria primita ca parametru.
-	//tratati situatia ca masina se afla si pe prima pozitie, si pe ultima pozitie
-}
+//functie stergeMasiniDinSeria
+//trebuie sa puem ** pentru ca modificam lista existenta
+//void stergeMasiniDinSeria(Nod** cap, char serieCautata) 
+//{
+//	
+//
+//}
 
 
 
 int main() {
 	Nod* cap = citireListaMasiniDinFisier("masini.txt");
 	afisareListaMasini(cap);
+	printf("Pretul mediu este: %.2f\n  ", calculeazaPretMediu(cap));
+	printf("Suma masini unui sofer:  %.2f\n", calculeazaPretulMasiniiUnuiSofer(cap, "Ionescu"));
+	dezalocareListaMasini(&cap);
 
 	return 0;
 }
