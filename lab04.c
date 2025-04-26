@@ -136,6 +136,25 @@ void dezalocareListaMasini(Nod** cap) {
 		free(aux);
 	}
 }
+//functie calcul pret mediu
+
+float calculeazaPretMediu(Nod* cap)
+{
+	float suma = 0;
+	int contor = 0;
+	while (cap)
+	{
+		suma += cap->info.pret;
+		contor++;
+		cap = cap->next;
+	}
+	if (contor > 0)
+	{
+		return suma / contor;
+	}
+
+	return 0;
+}
 
 
 void stergeMasiniDinSeria(/*lista masini*/ char serieCautata) {
