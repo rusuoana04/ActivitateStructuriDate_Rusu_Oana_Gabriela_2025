@@ -89,15 +89,53 @@ void afisareListaMasiniDeLaSfarsit(ListaDubla lista)
 		aux = aux->prev;
 	}
 }
+//functie adaugare masina in lista la final
+void adaugaMasinaInListaLaFinal(ListaDubla* lista, Masina masinaNoua)
+{
+	//trebuie sa cream un nou nod si sa ii alocam spatiu
+	Nod* nou = (Nod*)malloc(sizeof(Nod));
+	nou->info = masinaNoua;//shallow copy
+	nou->next = NULL;
+	nou->prev = lista->last;
+	if (lista->last != NULL)
+	{
+		//daca exista ultimul nod, setam urmatorul nod ca fiind noul nod creat
+		lista->last->next = nou;
+	}
+	//daca lista e goala, setam primul nod ca fiind noul nod creat
+	else
+	{
+		lista->first = nou;
+	}
 
+	lista->last = nou;
 
-void adaugaMasinaInLista(/*lista dubla de masini*/ Masina masinaNoua) {
-	//adauga la final in lista primita o noua masina pe care o primim ca parametru
+}
+//functie adaugare masina in lista la inceput
+void adaugaLaInceputInLista(ListaDubla* lista, Masina masinaNoua) 
+{
+	Nod* nou = (Nod*)malloc(sizeof(Nod));
+	nou->info = masinaNoua;//shallow copy
+	//mutam primul nod din lista ca fiind urmatorul nod 
+	nou->next = lista->first;
+	//setam nodul predecesor capului listei la null
+	nou->prev = NULL;
+
+	if (lista->first!=NULL)
+	{
+		//setam nodul predecesor primului nod din lista existent deja ca fiind noul nod pe care vrem sa il inseram
+		lista->first->prev = nou;
+	}
+	else
+	{
+		//daca lista e goala setam ultimul nod ca fiind noul nod creat
+		lista->last = nou;
+	}
+	//setam primul nod ca fiind nodul nou pe care vrem sa il inseram in lista
+	lista->first = nou;
 }
 
-void adaugaLaInceputInLista(/*lista dubla de masini*/ Masina masinaNoua) {
-	//adauga la inceputul listei dublu inlantuite o noua masina pe care o primim ca parametru
-}
+
 
 void* citireLDMasiniDinFisier(const char* numeFisier) {
 	//functia primeste numele fisierului, il deschide si citeste toate masinile din fisier
