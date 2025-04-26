@@ -175,11 +175,62 @@ float calculeazaPretulMasiniiUnuiSofer(Nod* cap, const char* numeSofer)
 
 //functie stergeMasiniDinSeria
 //trebuie sa puem ** pentru ca modificam lista existenta
-//void stergeMasiniDinSeria(Nod** cap, char serieCautata) 
-//{
-//	
-//
-//}
+void stergeMasiniDinSeria(Nod** cap, char serieCautata) 
+{
+	while ((*cap)&& (*cap)->info.serie==serieCautata)
+	{
+		//cream un nod auxiliar si il setam la capul listei
+		Nod* aux = (*cap);
+		//mutam capul listei la urmatorul nod;
+		(*cap) = aux->next;
+		//verificam daca avem informatie in char* si le stergem
+		if (aux->info.numeSofer)
+		{
+			free(aux->info.numeSofer);
+		}
+		if (aux->info.model)
+		{
+			free(aux->info.model);
+		}
+		//eliberam memoria si din nodul aux
+		free(aux);
+	}
+	if ((*cap))
+	{
+		Nod* p = *cap;
+		while (p)
+		{
+			while (p->next && p->next->info.serie != serieCautata)
+			{
+				p = p->next;
+			}
+			if (p->next)
+			{
+				Nod* aux = p->next;
+				p->next = aux->next;
+				if (aux->info.numeSofer)
+				{
+					free(aux->info.numeSofer);
+				}
+				if (aux->info.model)
+				{
+					free(aux->info.model);
+				}
+				//eliberam memoria si din nodul aux
+				free(aux);
+			}
+			else
+			{
+				p = NULL;
+			}
+		}
+		
+	}
+	
+	
+
+
+}
 
 
 
@@ -187,8 +238,14 @@ int main() {
 	Nod* cap = citireListaMasiniDinFisier("masini.txt");
 	afisareListaMasini(cap);
 	printf("Pretul mediu este: %.2f\n  ", calculeazaPretMediu(cap));
-	printf("Suma masini unui sofer:  %.2f\n", calculeazaPretulMasiniiUnuiSofer(cap, "Ionescu"));
-	dezalocareListaMasini(&cap);
+	printf("Suma masini unui sofer:  %.2f\n", calculeazaPretulMasiniiUnuiSofer(cap, "Gigel"));
+	printf("Stergere masini din seria A \n");
+	stergeMasiniDinSeria(&cap, 'A');
+	afisareListaMasini(cap);
+	printf("\n Stergere masini din seria B\n");
+	stergeMasiniDinSeria(&cap, 'B');
+	afisareListaMasini(cap);
 
+	dezalocareListaMasini(&cap);
 	return 0;
 }
