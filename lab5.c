@@ -28,6 +28,16 @@ typedef struct Nod Nod;
 
 //creare structura pentru Lista Dubla 
 
+struct ListaDubla
+{
+	//sau putem sa denumim nodurile Nod* cap, Nod* coada;
+	Nod* first;
+	Nod* last;
+	//cream o variabila care sa retina nr de noduri si sa putem sa le incrementam
+	int nrNoduri;
+};
+typedef struct ListaDubla ListaDubla;
+
 Masina citireMasinaDinFisier(FILE* file) {
 	char buffer[100];
 	char sep[3] = ",\n";
@@ -59,10 +69,22 @@ void afisareMasina(Masina masina) {
 	printf("Serie: %c\n\n", masina.serie);
 }
 
-void afisareListaMasini(/*lista dubla de masini*/) {
+//functie afisare lista masini dela inceput catre sfarsit
+void afisareListaMasiniDeLaInceput(ListaDubla lista) 
+{
+	Nod* aux = lista.first;
+	while (aux)
+	{
+		afisareMasina(aux->info);
+		aux = aux->next;
+	}
+}
+//functie afisare lista masini de la sfarsit
+void afisareListaMasiniDeLaSfarsit(/*lista dubla de masini*/) {
 	//afiseaza toate elemente de tip masina din lista dublu inlantuita
 	//prin apelarea functiei afisareMasina()
 }
+
 
 void adaugaMasinaInLista(/*lista dubla de masini*/ Masina masinaNoua) {
 	//adauga la final in lista primita o noua masina pe care o primim ca parametru
