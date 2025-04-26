@@ -153,9 +153,32 @@ ListaDubla citireLDMasiniDinFisier(const char* numeFisier)
 	fclose(file);
 	return lista;
 }
+//functie de dezalocare lista dubla
 
-void dezalocareLDMasini(/*lista dubla de masini*/) {
-	//sunt dezalocate toate masinile si lista dublu inlantuita de elemente
+void dezalocareLDMasini(ListaDubla* lista) {
+	
+	
+		Nod* p = lista->first;
+		while (p)
+		{
+			Nod* aux = p;
+			p = p->next;
+			if (aux->info.model != NULL)
+			{
+				free(aux->info.model);
+			}
+			if (aux->info.numeSofer != NULL)
+			{
+				free(aux->info.numeSofer);
+			}
+			free(aux);
+		}
+		
+		lista->first = NULL;
+		lista->last = NULL;
+		lista->nrNoduri = 0;
+
+	
 }
 
 float calculeazaPretMediu(/*lista de masini*/) {
@@ -199,5 +222,8 @@ int main() {
 	printf("Adaugare masina lista  la inceput: \n ");
 	adaugaLaInceputInLista(&lista, m1);
 	afisareListaMasiniDeLaInceput(lista);
+	dezalocareLDMasini(&lista);
+
+
 	return 0;
 }
