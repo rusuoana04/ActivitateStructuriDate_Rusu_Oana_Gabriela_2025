@@ -109,7 +109,7 @@ Nod* citireListaMasiniDinFisier(const char* numeFisier) {
 	{
 		while (!feof(f))
 		{
-			//creem lista cu inserare la sfarsit
+			// lista cu inserare la sfarsit
 			adaugaMasinaInLista(&cap, citireMasinaDinFisier(f));
 			
 		}
@@ -119,24 +119,31 @@ Nod* citireListaMasiniDinFisier(const char* numeFisier) {
 
 }
 
-void dezalocareListaMasini(/*lista de masini*/) {
-	//sunt dezalocate toate masinile si lista de elemente
+//dezalocare lista
+void dezalocareListaMasini(Nod** cap) {
+	while (*cap)
+	{
+		Nod* aux = *cap;
+		(*cap) = aux->next;
+		if (aux->info.model)
+		{
+			free(aux->info.model);
+		}
+		if (aux->info.numeSofer)
+		{
+			free(aux->info.numeSofer);
+		}
+		free(aux);
+	}
 }
 
-float calculeazaPretMediu(/*lista de masini*/) {
-	//calculeaza pretul mediu al masinilor din lista.
-	return 0;
-}
 
 void stergeMasiniDinSeria(/*lista masini*/ char serieCautata) {
 	//sterge toate masinile din lista care au seria primita ca parametru.
 	//tratati situatia ca masina se afla si pe prima pozitie, si pe ultima pozitie
 }
 
-float calculeazaPretulMasinilorUnuiSofer(/*lista masini*/ const char* numeSofer) {
-	//calculeaza pretul tuturor masinilor unui sofer.
-	return 0;
-}
+
 
 int main() {
 	Nod* cap = citireListaMasiniDinFisier("masini.txt");
