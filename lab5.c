@@ -79,10 +79,15 @@ void afisareListaMasiniDeLaInceput(ListaDubla lista)
 		aux = aux->next;
 	}
 }
-//functie afisare lista masini de la sfarsit
-void afisareListaMasiniDeLaSfarsit(/*lista dubla de masini*/) {
-	//afiseaza toate elemente de tip masina din lista dublu inlantuita
-	//prin apelarea functiei afisareMasina()
+//functie afisare lista masini de la sfarsit la inceput
+void afisareListaMasiniDeLaSfarsit(ListaDubla lista) 
+{
+	Nod* aux = lista.last;
+	while (aux)
+	{
+		afisareMasina(aux->info);
+		aux = aux->prev;
+	}
 }
 
 
