@@ -156,6 +156,23 @@ float calculeazaPretMediu(Nod* cap)
 	return 0;
 }
 
+float calculeazaPretulMasiniiUnuiSofer(Nod* cap, const char* numeSofer)
+{
+	float suma = 0;
+	while (cap)
+	{
+		//comparam daca informatia utila din numeSofer e egala cu valoarea primita in variabila numeSofer din functie
+		if (strcmp(cap->info.numeSofer, numeSofer))
+		{
+			suma += cap->info.pret;
+		}
+		//mutam nodul cap la urmatorul nod din lista
+		cap = cap->next;
+	}
+	//returnam suma
+	return suma;
+}
+
 
 void stergeMasiniDinSeria(/*lista masini*/ char serieCautata) {
 	//sterge toate masinile din lista care au seria primita ca parametru.
