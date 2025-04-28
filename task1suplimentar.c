@@ -68,13 +68,13 @@ int main()
 	Robot r3 = creareRobot(3, "robot2", 90);
 	afisareRobot(r1);
 
-	float pretFaraTVA=PretFaraTVA(r1, 0.19);
+	float pretFaraTVA = PretFaraTVA(r1, 0.19);
 	printf("pret fara tva: %.2f\n", pretFaraTVA);
 	printf("pret robot 3 inainte de modificare %.2f : \n", r3.pret);
-	
+
 	float modificaPr = modificaPret(&r3, 200);
 	printf("Pret modificat robot 3: %.2f", modificaPr);
-	
+
 
 	return 0;
 
