@@ -27,5 +27,29 @@
     <ClCompile Include="lab02.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="lab03.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lab04.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="exerclista.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lab5.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="exMagazinLs.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="exMagazinLD.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LDEx.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tasksuplimentar1.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

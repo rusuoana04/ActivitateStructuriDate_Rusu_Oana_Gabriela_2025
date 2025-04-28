@@ -127,10 +127,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="exerclista.c" />
+    <ClCompile Include="exMagazinLD.c" />
+    <ClCompile Include="exMagazinLs.c" />
     <ClCompile Include="lab02.c" />
+    <ClCompile Include="lab03.c" />
+    <ClCompile Include="lab04.c" />
     <ClCompile Include="lab1_Id.c" />
     <ClCompile Include="lab2_id.c" />
     <ClCompile Include="lab3_id.c" />
+    <ClCompile Include="lab5.c" />
+    <ClCompile Include="LDEx.c" />
+    <ClCompile Include="tasksuplimentar1.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

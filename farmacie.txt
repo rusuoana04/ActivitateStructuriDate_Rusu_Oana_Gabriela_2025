@@ -1,0 +1,6 @@
+Farmacia1,100,10,str. Exemplu nr 1
+Farmacia2,200,20,str. Exemplu nr 2
+Farmacia3,300,30,str. Exemplu nr 3
+Farmacia4,400,40,str. Exemplu nr 4
+Farmacia5,500,50,str. Exemplu nr 5
+
