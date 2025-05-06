@@ -72,6 +72,23 @@ int calculeazaHash(const char* nume, int dimensiune)
 	}
 	return suma % dimensiune;
 }
+//functie de citire Masina
+Masina citireMasina(FILE* file)
+{
+	char buffer[100];
+	char sep[4] = ";,\n";
+	fgets(buffer, 100, file);
+	Masina m;
+	char* aux;
+	aux = strtok(buffer, sep);
+	m.id = atoi(aux);
+	aux = strtok(NULL, sep);
+	m.nume = (char*)malloc(strlen(aux) + 1);
+	strcpy(m.nume, aux);
+	aux = strtok(NULL, sep);
+	m.pret = atof(aux);
+	return m;
+}
 
 
 int main()
