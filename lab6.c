@@ -50,6 +50,19 @@ void adaugaMasinaLista(Nod* cap, Masina masinaNoua)
 	nou->next = NULL;
 	aux->next = nou;
 }
+//functie de initializare HashTable
+HashTable initializare(int dimensiune)
+{
+	HashTable ht;
+	ht.dim = dimensiune;
+	ht.tabela = (Nod*)malloc(dimensiune * sizeof(Nod));
+	for (int i = 0; i < dimensiune; i++)
+	{
+		ht.tabela[i] = NULL;
+	}
+	return ht;
+}
+
 
 int main()
 {
