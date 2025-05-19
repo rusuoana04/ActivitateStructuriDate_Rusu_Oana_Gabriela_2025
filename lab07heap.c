@@ -121,7 +121,10 @@ void afisareHeap(Heap heap) {
 
 void afiseazaHeapAscuns(Heap heap) {
 	//afiseaza elementele ascunse din heap
-
+	for (int i = heap.nrMasini; i < heap.lungime; i++)
+	{
+		afisareMasina(heap.vector[i]);
+	}
 	
 }
 
@@ -153,5 +156,7 @@ int main() {
 	afisareHeap(heap);
 	printf("Masini extrase: \n");
 	afisareMasina(extrageMasina(&heap));
+	printf("Heap ascuns: \n");
+	afiseazaHeapAscuns(heap);
 	return 0;
 }
