@@ -96,28 +96,47 @@ Heap citireHeapDeMasiniDinFisier(const char* numeFisier) {
 	// pe care trebuie sa il filtram astfel incat sa respecte 
 	// principiul de MAX-HEAP sau MIN-HEAP dupa un anumit criteriu
 	// sunt citite toate elementele si abia apoi este filtrat vectorul
+	FILE* file = fopen(numeFisier, "r");
+	
+	Heap heap = initializareHeap(10);
+	while (!feof(file))
+	{
+		heap.vector[heap.nrMasini++] = citireMasinaDinFisier(file);
+	}
+	fclose(file);
+	for (int i = (heap.nrMasini - 2) / 2; i >= 0; i--)
+	{
+		filtreazaHeap(heap, i);
+	}
+	return heap;
 }
 
 void afisareHeap(Heap heap) {
 	//afiseaza elementele vizibile din heap
+	for (int i = 0; i < heap.nrMasini; i++)
+	{
+		afisareMasina(heap.vector[i]);
+	}
 }
-
-void afiseazaHeapAscuns(Heap heap) {
-	//afiseaza elementele ascunse din heap
-}
-
-Masina extrageMasina(void* heap) {
-	//extrage si returneaza masina de pe prima pozitie
-	//elementul extras nu il stergem...doar il ascundem
-}
-
-
-void dezalocareHeap(Heap* heap) {
-	//sterge toate elementele din Heap
-}
+//
+//void afiseazaHeapAscuns(Heap heap) {
+//	//afiseaza elementele ascunse din heap
+//	
+//}
+//
+//Masina extrageMasina(void* heap) {
+//	//extrage si returneaza masina de pe prima pozitie
+//	//elementul extras nu il stergem...doar il ascundem
+//}
+//
+//
+//void dezalocareHeap(Heap* heap) {
+//	//sterge toate elementele din Heap
+//}
 
 int main() {
-
+	Heap heap = citireHeapDeMasiniDinFisier("masini.txt");
+	afisareHeap(heap);
 
 	return 0;
 }
